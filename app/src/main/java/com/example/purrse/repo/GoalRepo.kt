@@ -14,5 +14,11 @@ class GoalRepo(private val goalsDao: GoalsDao) {
         return goalsDao.getGoalForMonth(userId, month)
     }
 
-    suspend fun
+    suspend fun updateGoal(goal: Goal){
+        return goalsDao.updateGoal(goal)
+    }
+
+    suspend fun deleteGoal(goal: Goal){
+        return goalsDao.deleteGoal(goal)
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.purrse.data
 
 import androidx.room.*
+import com.example.purrse.model.Expense
 import com.example.purrse.model.Goal
 
 @Dao
@@ -14,5 +15,8 @@ interface GoalsDao {
 
     @Update
     suspend fun  updateGoal(goal : Goal)
+
+    @Delete
+    suspend fun deleteGoal(goal: Goal)
 }
 
