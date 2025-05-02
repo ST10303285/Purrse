@@ -36,14 +36,14 @@ class CategorySelectionActivity : AppCompatActivity() {
             return
         }
 
-        // 2) wire up your ViewModel with the factory that now takes userId
+
         val dao = AppDatabase.getDatabase(this).categoryDao()
         val repo = CategoryRepo(dao)
         val factory = CategoryViewModelFactory(repo, currentUserId)
         viewModel = ViewModelProvider(this, factory)
             .get(CategoryViewModel::class.java)
 
-        // then the rest stays exactly as you had it:
+
         setupRecyclerView()
         observeCategories()
         setupSearch()

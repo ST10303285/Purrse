@@ -56,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
         val db = AppDatabase.getDatabase(this)
         val factory = RegisterViewModelFactory(
             UserRepo(db.userDao()),
-            db.categoryDao()             // ← pass it here
+            db.categoryDao()
         )
         registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 

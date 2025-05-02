@@ -11,7 +11,7 @@ class CategoryRepo (private val categoryDao: CategoryDao){
         categoryDao.insertCategory(category)
     }
 
-    // <-- add this
+
     suspend fun getAllCategories(): List<Category> {
         return categoryDao.getAllCategories()
     }
