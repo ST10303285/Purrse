@@ -27,6 +27,10 @@ data class Goal(
     val userId: Int,
     val minGoal: Double?,
     val maxGoal: Double,
-    val month: String //store user username
+    val month: String,
+    val amount: Double,
+    val title: String,
+    val targetDate: String
+
 
 )

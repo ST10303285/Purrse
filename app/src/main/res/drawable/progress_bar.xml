@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background circle -->
+    <item android:id="@android:id/background">
+        <shape android:shape="oval">
+            <solid android:color="#E0E0E0" /> <!-- Light gray background -->
+        </shape>
+    </item>
+
+    <!-- Progress stroke -->
+    <item android:id="@android:id/progress">
+        <shape android:shape="oval">
+            <stroke
+                android:width="10dp"
+                android:color="#4CAF50" /> <!-- Green progress stroke -->
+        </shape>
+    </item>
+</layer-list>

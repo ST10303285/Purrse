@@ -14,8 +14,15 @@ class UserRepo(private val userDao: UserDao) {
         return userDao.login(username, password)
     }
 
+    suspend fun registerUser(user: User): Long {
+        return userDao.insertUser(user)
+    }
     suspend fun getUserByID(userId: Int):User?{
         return userDao.getUserIdBy(userId)
+    }
+
+    suspend fun getUserByUsername(username: String):User?{
+        return userDao.getUserByUsername(username)
     }
 
     suspend fun deleteUser(user: User){

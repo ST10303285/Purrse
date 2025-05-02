@@ -22,6 +22,9 @@ class ExpenseRepo(private val expenseDao: ExpenseDao) {
         return expenseDao.getTotalPerCategory(userId,startDate,endDate)
     }
 
+    suspend fun getTotalSpending(): Double{
+        return expenseDao.getTotalSpending()?:0.0
+    }
     suspend fun deleteExpense(expense:Expense){
         expenseDao.deleteExpense(expense)
     }

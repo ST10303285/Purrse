@@ -19,8 +19,14 @@ interface ExpenseDao {
             AND date BETWEEN :startDate AND :endDate GROUP BY categoryId""")
     suspend fun getTotalPerCategory(userId: Int, startDate: String, endDate: String): List<CategorySpending>
 
+    @Query("SELECT SUM(amount) FROM expenses WHERE userId = :userId")
+    suspend fun getTotalExpenses(userId: Int): Double?
+
     @Delete
     suspend fun deleteExpense(expense: Expense)
+
+    @Query("SELECT SUM(amount) FROM expenses")
+    suspend fun getTotalSpending():Double?
 
 }
 data class CategorySpending(

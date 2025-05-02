@@ -10,7 +10,7 @@ interface GoalsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGoal(goal: Goal):Long
 
-    @Query("SELECT * FROM goals WHERE userId AND month =:month")
+    @Query("SELECT * FROM goals WHERE userId = :userId AND month =:month")
     suspend fun getGoalForMonth(userId: Int, month: String): Goal?
 
     @Update
@@ -18,5 +18,8 @@ interface GoalsDao {
 
     @Delete
     suspend fun deleteGoal(goal: Goal)
+
+    @Query("SELECT SUM(amount) FROM goals WHERE userId = :userId")
+    suspend fun getTotalIncome(userId: Int): Double?
 }
 

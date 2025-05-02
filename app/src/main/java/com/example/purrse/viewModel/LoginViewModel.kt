@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val userRepo: UserRepo): ViewModel() {
 
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
-    val loginSate: StateFlow<LoginState> =_loginState
+    val loginState: StateFlow<LoginState> =_loginState
 
     private val _username = MutableStateFlow("")
     val username: StateFlow<String> = _username
