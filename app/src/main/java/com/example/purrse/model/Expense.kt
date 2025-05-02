@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import androidx.room.Index
 
 @Entity(
-    tableName = "expenses",  //database table called 'user'
+    tableName = "expenses",
     foreignKeys = [
         ForeignKey(
             entity = User::class,
@@ -34,9 +34,9 @@ data class Expense(
     val categoryId : Int?,
     val amount: Double,
     val date: String,
-    val startTime : String?,
-    val endTime: String?,
-    val description: String,
+    val startTime : String? = null,
+    val endTime: String? = null,
+    val description: String?,
     val receipt: String?
 
 

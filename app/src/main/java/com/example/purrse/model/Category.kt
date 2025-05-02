@@ -21,7 +21,7 @@ import androidx.room.Index
 
 data class Category(
     @PrimaryKey(autoGenerate = true) //tells RoomDB to autogenerate IDs for each user
-    val categoryId: Int,
+    val categoryId: Int = 0,
     val userId: Int,
 
     val name: String , //store user username

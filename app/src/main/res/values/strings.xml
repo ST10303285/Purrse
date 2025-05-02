@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Purrse</string>
+    <string name="category_name_description">Food</string>
 </resources>

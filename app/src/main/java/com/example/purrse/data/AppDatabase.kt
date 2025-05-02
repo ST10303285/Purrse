@@ -19,7 +19,7 @@ import kotlin.concurrent.Volatile
 
 @Database(
     entities = [User::class, Category::class, Expense::class, Goal::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 
@@ -51,25 +51,24 @@ abstract class AppDatabase: RoomDatabase(){
                     )
                 """.trimIndent())
                 db.execSQL("CREATE INDEX IF NOT EXISTS `index_goals_userId` ON `goals` (`userId`)")
+
             }
         }
 
-        fun getDatabase(context: Context): AppDatabase{
-            return INSTANCE?: synchronized(this){
-                val instance= Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "purrse_db"
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(context, AppDatabase::class.java, "purrse_db")
+                    .fallbackToDestructiveMigration()
+                    .addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            db.execSQL("PRAGMA foreign_keys=ON;")
 
-                ).addMigrations(MIGRATION_1_2)  // Register the migration
+
+                        }
+                    })
                     .build()
-
-                INSTANCE = instance
-                instance
+                    .also { INSTANCE = it }
             }
-
-        }
-    }
-}
-
+        }}}
 

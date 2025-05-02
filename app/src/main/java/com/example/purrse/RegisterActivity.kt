@@ -16,6 +16,7 @@ import com.example.purrse.data.AppDatabase
 import com.example.purrse.repo.UserRepo
 import com.example.purrse.viewModel.factory.LoginViewModelFactory
 import android.widget.Toast
+import com.example.purrse.data.CategoryDao
 import kotlinx.coroutines.flow.collect
 import com.example.purrse.viewModel.LoginState
 import com.example.purrse.viewModel.RegisterState
@@ -52,9 +53,11 @@ class RegisterActivity : AppCompatActivity() {
         tvLoginRedirect = findViewById(R.id.tvLoginRedirect)
 
         // Setup ViewModel + Factory
-        val userDao = AppDatabase.getDatabase(this).userDao()
-        val userRepo = UserRepo(userDao)
-        val factory = RegisterViewModelFactory(userRepo)
+        val db = AppDatabase.getDatabase(this)
+        val factory = RegisterViewModelFactory(
+            UserRepo(db.userDao()),
+            db.categoryDao()             // ← pass it here
+        )
         registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
 
         // Observe registration state

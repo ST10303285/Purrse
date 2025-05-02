@@ -60,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             intent.putExtra("userId", state.user.userId)
                             startActivity(intent)
+
                         }
                         is LoginState.Error -> {
                             Toast.makeText(this@LoginActivity, state.message, Toast.LENGTH_LONG).show()

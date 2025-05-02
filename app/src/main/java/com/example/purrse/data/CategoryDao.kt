@@ -11,8 +11,11 @@ interface CategoryDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCategory(category: Category):Long
 
-    @Query("SELECT * FROM categories WHERE userId =:userId")
-    suspend fun getCategoriesForUser(userId: Int): List<Category>
+    @Query("SELECT * FROM categories WHERE userId = :userId")
+    suspend fun  getCategoriesForUser(userId: Int): List<Category>
+
+    @Query("SELECT * FROM categories")
+    suspend fun getAllCategories(): List<Category>
 
    @Delete
     suspend fun deleteCategory(category: Category)

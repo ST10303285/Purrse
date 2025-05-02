@@ -74,7 +74,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_add_expense -> {
-                    startActivity(Intent(this, ExpenseActivity::class.java))
+                    startActivity(Intent(this, AddExpenseActivity::class.java))
                     true
                 }
                 R.id.nav_trends -> {

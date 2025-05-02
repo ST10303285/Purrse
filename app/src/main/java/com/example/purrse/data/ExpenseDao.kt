@@ -28,6 +28,10 @@ interface ExpenseDao {
     @Query("SELECT SUM(amount) FROM expenses")
     suspend fun getTotalSpending():Double?
 
+    companion object {
+        fun insertExpense(expense: Expense) {}
+    }
+
 }
 data class CategorySpending(
     val categoryId : Int,
